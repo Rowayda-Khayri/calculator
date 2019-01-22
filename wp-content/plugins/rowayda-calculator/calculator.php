@@ -22,6 +22,8 @@ function addMenu() {
 
 function calculate() {
     
+    global $wpdb;
+    
     echo 'Hi Calculator :)';
     
     ?>
@@ -55,8 +57,12 @@ function calculate() {
 
                     // Print total to the browser
                     echo "<h1>{$_POST['number1']} {$_POST['operation']} {$_POST['number2']} equals $total</h1>";
-
-//                    $wpdb->insert( 'table', array( 'column1' => 'value1', 'column2' => 123 ), array( '%s', '%d' ) );
+                    
+                    add_user_meta( get_current_user_id(), 'num1', $_POST['number1'] );
+                    add_user_meta( get_current_user_id(), 'num2', $_POST['number2'] );
+                    add_user_meta( get_current_user_id(), 'operation', $_POST['operation'] );
+                    add_user_meta( get_current_user_id(), 'result', $total );
+                    
                 } else {
 
                     // Print error message to the browser
