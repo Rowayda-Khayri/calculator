@@ -16,7 +16,10 @@ add_action('admin_menu','addMenu');
 
 function addMenu() {
     
-    add_menu_page('pageTitleCalculator', 'menuTitleCalculator', 'read', 'Slugcalculator', 'calculate');
+    //calculator
+    add_menu_page('pageTitleCalculator', 'Calculator', 'read', 'Slugcalculator', 'calculate');
+    //calculations results
+    add_menu_page('Calculations', 'Calculations', 'read', 'Calculations', 'showCalculations');
     
 }
 
@@ -58,6 +61,7 @@ function calculate() {
                     // Print total to the browser
                     echo "<h1>{$_POST['number1']} {$_POST['operation']} {$_POST['number2']} equals $total</h1>";
                     
+                    //save operation to db
                     add_user_meta( get_current_user_id(), 'num1', $_POST['number1'] );
                     add_user_meta( get_current_user_id(), 'num2', $_POST['number2'] );
                     add_user_meta( get_current_user_id(), 'operation', $_POST['operation'] );
@@ -90,4 +94,22 @@ function calculate() {
 	
 
 <?php
+}
+
+function showCalculations() {
+    
+    $user_meta = get_user_meta(get_current_user_id());
+//    $user_meta = get_user_meta(get_current_user_id(), 'meta_key', 'nickname');
+    
+    
+    print_r($user_meta); 
+//    var_dump($user_meta); 
+//    var_dump($user_meta[0]['meta_key'][0]); 
+//    foreach ($user_meta as $meta) {
+//        echo $meta['meta_key'][0] ;
+//        echo $meta->meta_key . "|" . $meta->meta_value ;
+//    }
+    
+    
+    
 }
