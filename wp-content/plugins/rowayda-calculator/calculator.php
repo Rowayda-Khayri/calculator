@@ -1,6 +1,6 @@
 <?php
 /*
-  Plugin Name: Calculator
+  Plugin Name: Rowayda Calculator
   Plugin URI: https://github.com/Rowayda-Khayri/calculator
   Description: Make calculations 
   Version: 1.0
@@ -54,8 +54,9 @@ function calculate() {
                     }
 
                     // Print total to the browser
-                    echo "<h1>{$_POST['number1']} {$_POST['operation']} {$_POST['number2']} equals {$total}</h1>";
+                    echo "<h1>{$_POST['number1']} {$_POST['operation']} {$_POST['number2']} equals $total</h1>";
 
+//                    $wpdb->insert( 'table', array( 'column1' => 'value1', 'column2' => 123 ), array( '%s', '%d' ) );
                 } else {
 
                     // Print error message to the browser
